@@ -1,0 +1,34 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": [
+                // "configs/base_config.yaml",
+                "configs/eval_config.yaml",
+
+                // "--controller", "oracle_astar",
+                // "--split", "valid_seen",
+                // "--start_idx", "13",
+                // "--end_idx", "30",
+                
+            ],
+            "env": {
+                "PYTHONPATH": "$(pwd)/..",
+                "DISPLAY": ":1",
+                "ALFWORLD_DATA": "/home/cheolhong/ch/alfworld"
+            },
+            "python": "/home/cheolhong/anaconda3/envs/alfworld/bin/python",
+            "justMyCode": false,  // Allow stepping into external library code
+            "stopOnEntry": false, // Do not stop at the first statement of the program
+            "redirectOutput": true,  // Redirect program output to the debug console
+            "debugOptions": [
+                "RedirectOutput"
+            ]
+        }
+    ]
+}
