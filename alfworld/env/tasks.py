@@ -697,8 +697,8 @@ class CombinatedTask(NewBaseTask):
 
     def goal_satisfied(self, state):
         # check if any object of 'object' class inside receptacle of 'parent' class is cold
-        pcs = self.goal_conditions_met(state)
-        return pcs[0] == pcs[1]
+        pcs, results = self.goal_conditions_met(state)
+        return pcs[0] == pcs[1], results
 
     def goal_conditions_met(self, state):
         # tasks = ['pick_cool_then_place_in_recep', 'pick_two_obj_and_place']
@@ -725,7 +725,40 @@ class CombinatedTask(NewBaseTask):
                 results[task_id] = (s, ts)
             s_ += s; ts_ += ts
 
-        return s_, ts_
+        return (s_, ts_), results
+
+
+    # def goal_satisfied(self, state):
+    #     # check if any object of 'object' class inside receptacle of 'parent' class is cold
+    #     pcs = self.goal_conditions_met(state)
+    #     return pcs[0] == pcs[1]
+
+    # def goal_conditions_met(self, state):
+    #     # tasks = ['pick_cool_then_place_in_recep', 'pick_two_obj_and_place']
+    #     results = dict()
+    #     s_ = 0; ts_ = 0
+    #     for task_id in list(self.traj.keys()):
+    #         if self.traj[task_id]['task_type'] == 'pick_and_place_simple':
+    #             s, ts = self.pick_and_place_simple(state, self.traj[task_id])
+    #             results[task_id] = (s, ts)
+    #         elif self.traj[task_id]['task_type'] == 'pick_two_obj_and_place':
+    #             s, ts = self.pick_two_obj_and_place(state, self.traj[task_id])
+    #             results[task_id] = (s, ts)
+    #         elif self.traj[task_id]['task_type'] == 'look_at_obj_in_light':
+    #             s, ts = self.look_at_obj_in_light(state, self.traj[task_id])
+    #             results[task_id] = (s, ts)
+    #         elif self.traj[task_id]['task_type'] == 'pick_heat_then_place_in_recep':
+    #             s, ts = self.pick_heat_then_place_in_recep(state, self.traj[task_id])
+    #             results[task_id] = (s, ts)
+    #         elif self.traj[task_id]['task_type'] == 'pick_cool_then_place_in_recep':
+    #             s, ts = self.pick_cool_then_place_in_recep(state, self.traj[task_id])
+    #             results[task_id] = (s, ts)
+    #         elif self.traj[task_id]['task_type'] == 'pick_clean_then_place_in_recep':
+    #             s, ts = self.pick_clean_then_place_in_recep(state, self.traj[task_id])
+    #             results[task_id] = (s, ts)
+    #         s_ += s; ts_ += ts
+
+    #     return s_, ts_
 
 
     ### goal_conditions_met for each task

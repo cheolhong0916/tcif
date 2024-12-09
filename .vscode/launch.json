@@ -9,18 +9,19 @@
             "console": "integratedTerminal",
             "args": [
                 // "configs/base_config.yaml",
-                "configs/eval_config.yaml",
+                // "configs/eval_config.yaml",
 
-                // "--controller", "oracle_astar",
-                // "--split", "valid_seen",
-                // "--start_idx", "13",
-                // "--end_idx", "30",
+                "--controller", "oracle_astar",
+                "--split", "valid_seen",
+                "--start_idx", "13",
+                "--end_idx", "30",
+                "--method_name", "knowagent"
                 
             ],
             "env": {
-                "PYTHONPATH": "$(pwd)/..",
+                "PYTHONPATH": "$(pwd)",
                 "DISPLAY": ":1",
-                "ALFWORLD_DATA": "/home/cheolhong/ch/alfworld"
+                // "ALFWORLD_DATA": "/home/cheolhong/ch/alfworld"
             },
             "python": "/home/cheolhong/anaconda3/envs/alfworld/bin/python",
             "justMyCode": false,  // Allow stepping into external library code
